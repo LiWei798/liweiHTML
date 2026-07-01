@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<button id="dark-toggle" title="Toggle dark mode">☀</button>
 <header>
     <h1>Your Name</h1>
     <p>Welcome to my website!</p>
@@ -41,5 +42,19 @@
 <footer>
     <p>&copy; 2026 Your Name</p>
 </footer>
+<script>
+const toggle = document.getElementById('dark-toggle');
+const prefersDark = localStorage.getItem('dark-mode') === 'true';
+if (prefersDark) document.documentElement.className = 'dark';
+
+toggle.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.toggle('dark');
+  toggle.textContent = isDark ? '☾' : '☀';
+  localStorage.setItem('dark-mode', isDark);
+});
+
+// Set initial icon
+if (prefersDark) toggle.textContent = '☾';
+</script>
 </body>
 </html>
